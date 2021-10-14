@@ -101,24 +101,6 @@ class _FlipCardGameState extends State<FlipCardGame>
     // }
   }
 
-  Widget _sombra(BuildContext context, Widget? child) {
-    return Padding(
-      padding: const EdgeInsets.all(42.0),
-      child: Container(
-        width: 300,
-        height: 300,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              "images/sombra.png",
-            ),
-            // fit: BoxFit.scaleDown,
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return _isFinished
@@ -127,9 +109,8 @@ class _FlipCardGameState extends State<FlipCardGame>
                 body: Center(
                   child: Scaffold(
                     backgroundColor: Colors.black,
-                    body: Container(
-                      height: 200,
-                      width: 200,
+                    body: Align(
+                      alignment: Alignment(0.0, 0.0),
                       child:Image.network('http://www.reactiongifs.com/wp-content/uploads/2013/10/mind-blown.gif',
                       ),
                     ),
@@ -186,7 +167,7 @@ class _FlipCardGameState extends State<FlipCardGame>
                             borderRadius: BorderRadius.circular(24),
                           ),
                           child: Text(
-                            "Página inicial",
+                            "Voltar ao Menu",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 17,
@@ -295,12 +276,12 @@ class _FlipCardGameState extends State<FlipCardGame>
                                 front: Padding(
                                   padding: EdgeInsets.all(10),
                                   child: CircleAvatar(
-                                    radius: 35,
-                                    backgroundColor: Colors.black,
+                                    radius: 40,
+                                    backgroundColor: Color(0xFF120A8F),
                                     child: CircleAvatar(
-                                      radius: 30,
+                                      radius: 35,
                                       backgroundImage: AssetImage(
-                                        "assets/sc.png",
+                                        "assets/images/logo3.jpeg",
                                       ),
                                     ),
                                   ),
@@ -329,7 +310,7 @@ class _FlipCardGameState extends State<FlipCardGame>
                             borderRadius: BorderRadius.circular(24),
                           ),
                           child: Text(
-                            "Página inicial",
+                            "Voltar ao Menu",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 17,

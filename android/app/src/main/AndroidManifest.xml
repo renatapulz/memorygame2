@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jogodamemoria">
    <application
-        android:label="jogodamemoria"
+        android:label="Super Dev Memo"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

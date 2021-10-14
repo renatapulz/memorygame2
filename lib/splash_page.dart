@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jogodamemoria/homepage.dart';
+import 'homepage.dart';
 
 bool repet = true;
 
@@ -14,8 +14,7 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   late final AnimationController controller;
-  late final AnimationController controller1;
-  late final Animation<double> patofogo;
+
   late final Animation<Alignment> wandering1CubeAlignmentAnimation;
   late final Animation<double> profileOpacityAnimation;
   late final Animation<double> profileHeightAnimation;
@@ -26,40 +25,25 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     controller =
-        new AnimationController(duration: Duration(seconds: 6), vsync: this)
-          ..addListener(() => setState(() {}));
-
-    patofogo = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-        parent: controller, curve: Interval(0.05, 1.0, curve: Curves.ease)));
+    new AnimationController(duration: Duration(seconds: 6), vsync: this)
+      ..addListener(() => setState(() {}));
 
     profileOpacityAnimation = Tween(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(parent: controller, curve: Interval(0.2, 0.5)));
-    // profileHeightAnimation = Tween(begin: 400.0, end: 200.0).animate(
-    //     CurvedAnimation(parent: controller, curve: Interval(0.0, 1.0)));
 
     profileHeightAnimation = TweenSequence<double>(
       <TweenSequenceItem<double>>[
         TweenSequenceItem<double>(
-          tween: Tween<double>(begin: 400.0, end: 200.0)
-              .chain(CurveTween(curve: Curves.ease)),
-          weight: 40.0,
+          tween: Tween<double>(begin: 300.0, end: 200.0)
+              .chain(CurveTween(curve: Curves.easeInOutQuad)),
+          weight: 0.01,
         ),
         TweenSequenceItem<double>(
-          tween: Tween<double>(begin: 200.0, end: 400.0)
-              .chain(CurveTween(curve: Curves.ease)),
-          weight: 40.0,
+          tween: Tween<double>(begin: 200.0, end: 300.0)
+              .chain(CurveTween(curve: Curves.easeInOutQuad)),
+          weight: 0.01,
         ),
       ],
-
-      //   [
-      //   TweenSequenceItem<List>(
-      //       Tween(begin: 400.0, end: 200.0).animate(
-      //     CurvedAnimation(parent: controller, curve: Interval(0.0, 1.0)));),
-      //   TweenSequenceItem<Alignment>(
-      //       tween: AlignmentTween(
-      //           begin: Alignment.topCenter, end: Alignment.bottomCenter),
-      //       weight: 2),
-      // ]
     ).animate(CurvedAnimation(parent: controller, curve: Curves.linear));
 
     wandering1CubeAlignmentAnimation = TweenSequence<Alignment>([
@@ -94,7 +78,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     Future.delayed(const Duration(milliseconds: 5000), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-            // since this triggers when the animation is done, no duration is needed
+          // since this triggers when the animation is done, no duration is needed
             builder: (context) => HomePage()),
       );
     });
@@ -122,18 +106,15 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   }
 
   Widget _sombra(BuildContext context, Widget? child) {
-    return Padding(
-      padding: const EdgeInsets.all(42.0),
-      child: Container(
-        width: 300,
-        height: 300,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              "assets/images/sombra.png",
-            ),
-            // fit: BoxFit.scaleDown,
+    return Container(
+      width: 650,
+      height: 650,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            "assets/images/sombra.png",
           ),
+          // fit: BoxFit.scaleDown,
         ),
       ),
     );
@@ -145,19 +126,6 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
       backgroundColor: Color(0xFF52A5FF),
       body: Stack(
         children: <Widget>[
-          // Opacity(
-          //   opacity: explosaoBomba.value,
-          //   child: Container(
-          //     decoration: BoxDecoration(
-          //       image: DecorationImage(
-          //         image: AssetImage(
-          //           "images/brain-terry.gif",
-          //         ),
-          //         fit: BoxFit.scaleDown,
-          //       ),
-          //     ),
-          //   ),
-          // ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -166,6 +134,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
                   height: 2,
                 ),
                 Container(
+                  // color: Colors.amber,
                     width: 550,
                     height: profileHeightAnimation.value,
                     child: AnimatedBuilder(
@@ -173,7 +142,6 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
               ],
             ),
           ),
-
           Center(
             child: Container(
                 width: 550,

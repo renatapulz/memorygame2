@@ -14,14 +14,23 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(0, 60, 0, 0),
-            height: 200,
-            width: 200,
-            child: Image.network('http://www.reactiongifs.com/wp-content/uploads/2013/10/mind-blown.gif',
+            margin: EdgeInsets.fromLTRB(0, 80, 0, 30),
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 5,
+                color:Color(0xFF54A3FB),
+              ),
+              borderRadius: BorderRadius.circular(8),
             ),
-          ),
+              child: Image(
+                width: 120,
+                image: AssetImage(
+                  'assets/images/logocerta.jpeg',
+                ),
+              ),
+            ),
           Container(
-            // margin: EdgeInsets.fromLTRB(0, 200, 0, 0),
+            margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
             child: Text(
               'Escolha o nível:',
               style: TextStyle(

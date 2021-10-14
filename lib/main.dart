@@ -15,9 +15,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Jogo da memória",
+      title: "Super Dev Memo",
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: SplashPage(),
